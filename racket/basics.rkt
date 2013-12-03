@@ -1,5 +1,6 @@
 #lang racket
 
+
 (define (sum-to-n n)
   (cond
    ((zero? n) 0)
@@ -41,11 +42,14 @@
 ;;; Return whether element a is contained in any level of S-expression lst
 (define (member?* a lst) 
 (cond
-  (null?lst)#f)
-(equal? a(car lst) #t)
-(list? (car lst) (member?* a (car lst)))
-(else
-  (member?* a (cdr lst))
+  
+((null?lst)#f)
+( (equal? a (car lst)) #t)
+
+( (list? (car lst)) (member?* a (car lst)) )
+
+(else (member?* a (cdr lst)))
+)
 )
 
 ;;; Return the intersection of sets set1 and set2
@@ -69,24 +73,24 @@
 ((null?lst)#f)
 (else(two-in-a-row?cdr(lst)))
 )
-
+)
 ;;; Return the nth element of a list
 (define (nth lst n) 
 (cond
 
-((equal? n 0) car(lst)))
-
-((null?lst) "Index out of range"))
+( (equal? n 0) car(lst) )
 
 (else(nth cdr(lst) n-1))
 )
-
+)
 ;;; Return a list containing the unique elements of lst
 (define (dedup lst) 
 (cond
-  ((member?* car(lst) cdr(lst)) (dedup cdr(lst)))
+  
+(  (member?* car(lst) cdr(lst)) (dedup cdr(lst)) )
+( else(cons(car(lst) (dedup lst))))
 
-(else(cons(car(lst) (dedup lst))))
+)
 )
 
 ;;; Return a list containing the elements of lst in reverse order
@@ -112,4 +116,3 @@
  nth
  dedup
  reverse)
-
